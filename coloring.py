@@ -12,9 +12,9 @@ if len(argv) >= 3:
 else:
     q = 3
 if len(argv) >= 4:
-    solveur = argv[3]
+    solveur = argv[3:]
 else:
-    solveur = "glucose_static -model"
+    solveur = ["glucose_static", "-model"]
 ml = "coloring.ml"
 cnf = "clauses.cnf"
 sortie_sat = "result.txt"
@@ -32,7 +32,7 @@ with open(entree, "r") as f:
         adjacence.append([i, j])
 
 run(["ocaml", ml, entree, str(q)])
-run(solveur.split() + [cnf, sortie_sat])
+run(solveur + [cnf, sortie_sat])
 
 with open(sortie_sat, "r") as f:
     s = f.readline().strip()
