@@ -18,7 +18,6 @@ else:
 ml = "coloring.ml"
 cnf = "clauses.cnf"
 sortie_sat = "result.txt"
-solution = "solution.png"
 
 colors = {1: "blue", 2: "green", 3: "red", 4: "yellow", 5: "purple"}
 
