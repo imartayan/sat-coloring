@@ -79,6 +79,18 @@ let fnc f =
       |_ -> loop (depl_non (Non f)) (fun f' -> re f')
   in loop f (fun x -> x);;
 
+(* Fonctions utiles *)
+
+let rec fold f b = function
+  |[] -> b
+  |h::t -> fold f (f h b) t;;
+
+let range a b =
+  let rec aux r a =
+    if a > b then r
+    else aux (a::r) (a + 1)
+  in aux [] a;;
+
 (* Entrée des paramètres *)
 
 let ic = open_in entree;;
@@ -104,16 +116,6 @@ close_in ic;;
 
 let c i k = q * (i - 1) + k;;
 
-let rec fold f b = function
-  |[] -> b
-  |h::t -> fold f (f h b) t;;
-
-let range a b =
-  let rec aux r a =
-    if a > b then r
-    else aux (a::r) (a + 1)
-  in aux [] a;;
-
 let f i k k' g =
   if k' = k then et (Var (c i k')) g
   else et (non (Var (c i k'))) g;;
@@ -128,11 +130,11 @@ let tous_couleur_unique = fold (fun i f -> et (couleur_unique i) f) (couleur_uni
 
 (* Couleurs des voisins différentes *)
 
-let meme_couleur (i,j) = fold (fun k f -> et (equiv (Var (c i k)) (Var (c j k))) f) (equiv (Var (c i 1)) (Var (c j 1))) (range 2 q);;
+let couleur_diff (i,j) = non (fold (fun k f -> et (equiv (Var (c i k)) (Var (c j k))) f) (equiv (Var (c i 1)) (Var (c j 1))) (range 2 q));;
 
-let couleurs_differentes l = fold (fun p f -> et (non (meme_couleur p)) f) (non (meme_couleur (List.hd l))) (List.tl l);;
+let voisins_couleurs_diff l = fold (fun p f -> et (couleur_diff p) f) (couleur_diff (List.hd l)) (List.tl l);;
 
-let conditions = Et (tous_couleur_unique, couleurs_differentes edges);;
+let conditions = Et (tous_couleur_unique, voisins_couleurs_diff edges);;
 
 let clauses = fnc conditions;;
 
