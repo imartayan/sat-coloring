@@ -8,6 +8,7 @@ else:
     n = randint(10, 1000)
 if len(argv) >= 3:
     p = int(argv[2])
+    assert 0 <= p <= n * (n-1) / 2
 else:
     p = randint(0, n * sqrt(n - 1) // 2)
 if len(argv) >= 4:
