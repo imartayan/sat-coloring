@@ -6,14 +6,21 @@ import networkx as nx
 if len(argv) >= 2:
     entree = argv[1]
 else:
-    entree = "exemples_graphes/graphe_petersen.txt"
+    entree = "exemples/graphe_petersen.txt"
 if len(argv) >= 3:
     q = int(argv[2])
 else:
     q = 3
-ml = "magic_coloring_tail_general.ml"
+if len(argv) >= 4:
+    solveur = argv[3]
+else:
+    solveur = "glucose_static -model"
+ml = "coloring.ml"
 cnf = "clauses.cnf"
-sortie = "result.txt"
+sortie_sat = "result.txt"
+solution = "solution.png"
+
+colors = {1: "blue", 2: "green", 3: "red", 4: "yellow", 5: "purple"}
 
 with open(entree, "r") as f:
     s = f.readline()
@@ -25,12 +32,12 @@ with open(entree, "r") as f:
         adjacence.append([i, j])
 
 run(["ocaml", ml, entree, str(q)])
-run(["glucose_static", "-model", cnf, sortie])
+run([solveur, cnf, sortie_sat])
 
-with open(sortie, "r") as f:
+with open(sortie_sat, "r") as f:
     s = f.readline().strip()
     if s == "UNSAT":
-        print(">> NON SATISFIABLE <<")
+        print(">> IMPOSSIBLE <<")
     else:
         solution = list(map(int, s.split()))
         color_list = []
@@ -45,11 +52,10 @@ with open(sortie, "r") as f:
         for h in adjacence:
             G.add_edge(h[0], h[1])
         color_map = []
-        colors = {1: "blue", 2: "green", 3: "red", 4: "yellow", 5: "purple"}
         for c in color_list:
             color_map.append(colors[c])
         # Dessin du graphe solution
         fig = plt.figure()
         nx.draw(G, node_color=color_map, with_labels=True)
-        fig.savefig("graphes_solution/graphe_solution.png")
+        fig.savefig(solution)
         plt.show()
