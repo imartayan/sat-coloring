@@ -10,7 +10,9 @@ Ce projet utilise le SAT solveur [glucose](https://www.labri.fr/perso/lsimon/glu
 ## Utilisation
 
 Le programme se lance de la façon suivante :
-`python3 coloring.py fichier_graphe nombre_de_couleurs`
+`python3 coloring.py fichier_graphe nombre_de_couleurs sat_solveur`
+
+Par défaut, le nombre de couleurs vaut 3 et le SAT solveur est [glucose](https://www.labri.fr/perso/lsimon/glucose/).
 
 ## Format du fichier d'entrée
 
