@@ -13,7 +13,7 @@ else:
 if len(argv) >= 4:
     fichier = argv[3]
 else:
-    fichier = "exemples/graphe_aleat.txt"
+    fichier = "graphe_aleat.txt"
 
 with open(fichier, "w") as out:
     out.write(f"{n} {p}\n")

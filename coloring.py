@@ -32,7 +32,7 @@ with open(entree, "r") as f:
         adjacence.append([i, j])
 
 run(["ocaml", ml, entree, str(q)])
-run([solveur, cnf, sortie_sat])
+run(solveur.split() + [cnf, sortie_sat])
 
 with open(sortie_sat, "r") as f:
     s = f.readline().strip()
@@ -45,7 +45,7 @@ with open(sortie_sat, "r") as f:
             for k in range(q):
                 if solution[q * i + k] >= 0:
                     color_list.append(k + 1)
-        # Creation du graphe solution
+        # Création du graphe solution
         G = nx.Graph()
         for j in range(1, n + 1):
             G.add_node(j)
@@ -57,5 +57,4 @@ with open(sortie_sat, "r") as f:
         # Dessin du graphe solution
         fig = plt.figure()
         nx.draw(G, node_color=color_map, with_labels=True)
-        fig.savefig(solution)
         plt.show()
