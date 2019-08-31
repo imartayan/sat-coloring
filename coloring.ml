@@ -3,7 +3,7 @@ open Printf;;
 
 let entree = Sys.argv.(1);;
 let q = int_of_string Sys.argv.(2);;
-let sortie = "clauses.cnf";;
+let sortie_cnf = "clauses.cnf";;
 
 (* Formules logiques *)
 
@@ -142,7 +142,7 @@ let longueur = List.length clauses;;
 
 (* Sortie CNF *)
 
-let oc = open_out sortie;;
+let oc = open_out sortie_cnf;;
 
 let ligne l =
   let rec aux r = function
