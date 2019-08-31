@@ -11,3 +11,9 @@ Ce projet utilise le SAT solveur [glucose](https://www.labri.fr/perso/lsimon/glu
 
 Le programme se lance de la façon suivante :
 `python3 coloring.py fichier_graphe nombre_de_couleurs`
+
+## Format du fichier d'entrée
+
+Le fichier d'entrée représentant le graphe doit contenir :
+* sur la première ligne _n_ le nombre de sommets et _p_ le nombre d'arêtes
+* sur les _p_ lignes suivantes le numéro des deux sommets reliés par une arêtes
