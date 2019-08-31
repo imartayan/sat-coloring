@@ -19,3 +19,8 @@ Par défaut, le nombre de couleurs vaut 3 et le SAT solveur est [glucose](https:
 Le fichier d'entrée représentant le graphe doit contenir :
 * sur la première ligne _n_ le nombre de sommets et _p_ le nombre d'arêtes
 * sur les _p_ lignes suivantes le numéro des deux sommets reliés par une arêtes
+
+## Générateur de graphe
+
+Le programme `generator.py` permet de générer un fichier d'entrée de la façon suivante :
+`python3 generator.py nombre_de_sommets nombre_d_aretes nom_du_fichier`
