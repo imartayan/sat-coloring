@@ -5,7 +5,7 @@ Il est licencié selon les termes de la licence GPLv3.
 
 ## Prérequis
 
-Ce projet utilise le SAT solveur [glucose](https://www.labri.fr/perso/lsimon/glucose/) et la librairie python networkx (`pip install networkx`).
+Ce projet utilise le langage [OCaml](https://ocaml.org/index.fr.html), le SAT solveur [glucose](https://www.labri.fr/perso/lsimon/glucose/) et la librairie python networkx (`pip install networkx`).
 
 ## Utilisation
 
