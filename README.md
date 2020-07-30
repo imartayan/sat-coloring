@@ -9,10 +9,18 @@ Ce projet utilise le langage [OCaml](https://ocaml.org/index.fr.html), le solveu
 
 ## Utilisation
 
-Le programme se lance de la façon suivante :
-`python3 coloring.py fichier_graphe nombre_de_couleurs`
+```
+usage: coloring.py [-h] [graph] colors
 
-Par défaut, le nombre de couleurs vaut 3.
+Coloration de graphes à l'aide d'un solveur SAT
+
+positional arguments:
+  graph       file containing the graph
+  colors      number of colors
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
 
 ## Format du fichier d'entrée
 
