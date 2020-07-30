@@ -5,14 +5,14 @@ Il est licencié selon les termes de la licence GPLv3.
 
 ## Prérequis
 
-Ce projet utilise le langage [OCaml](https://ocaml.org/index.fr.html), le SAT solveur [glucose](https://www.labri.fr/perso/lsimon/glucose/) et la librairie python networkx (`pip install networkx`).
+Ce projet utilise le langage [OCaml](https://ocaml.org/index.fr.html), le solveur SAT [glucose](https://www.labri.fr/perso/lsimon/glucose/) et la librairie python networkx (`pip install networkx`).
 
 ## Utilisation
 
 Le programme se lance de la façon suivante :
-`python3 coloring.py fichier_graphe nombre_de_couleurs sat_solveur`
+`python3 coloring.py fichier_graphe nombre_de_couleurs`
 
-Par défaut, le nombre de couleurs vaut 3 et le SAT solveur est [glucose](https://www.labri.fr/perso/lsimon/glucose/).
+Par défaut, le nombre de couleurs vaut 3.
 
 ## Format du fichier d'entrée
 
