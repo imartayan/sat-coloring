@@ -10,13 +10,13 @@ Ce projet utilise le langage [OCaml](https://ocaml.org/index.fr.html), le solveu
 ## Utilisation
 
 ```
-usage: coloring.py [-h] [graph] colors
+usage: python3 coloring.py [-h] [graph] [colors]
 
 Coloration de graphes à l'aide d'un solveur SAT
 
 positional arguments:
   graph       file containing the graph
-  colors      number of colors
+  colors      number of colors (3 by default)
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -30,5 +30,16 @@ Le fichier d'entrée représentant le graphe doit contenir :
 
 ## Générateur de graphe
 
-Le programme `generator.py` permet de générer un fichier d'entrée de la façon suivante :
-`python3 generator.py nombre_de_sommets nombre_d_aretes nom_du_fichier`
+```
+usage: python3 generator.py [-h] vertices [file]
+
+Génération d'un graphe aléatoire
+
+positional arguments:
+  vertices    number of vertices
+  file        where to write the graph
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+```
