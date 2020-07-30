@@ -11,13 +11,17 @@ parser.add_argument(
     default="example/simple.txt",
     type=str,
 )
-parser.add_argument("colors", help="number of colors", default=3, type=int)
+parser.add_argument(
+    "colors", help="number of colors (3 by default)", nargs="?", default=3, type=int
+)
 args = parser.parse_args()
 
 sat_solver = ["glucose_static", "-model"]
 sat_result = "result.txt"
 cnf_file = "clauses.cnf"
 coloring_ml = "coloring.ml"
+
+colors = {1: "blue", 2: "green", 3: "red", 4: "yellow", 5: "purple"}
 
 with open(args.graph, "r") as f:
     s = f.readline()
@@ -30,8 +34,6 @@ with open(args.graph, "r") as f:
 
 run(["ocaml", coloring_ml, args.graph, str(args.colors)])
 run(sat_solver + [cnf_file, sat_result])
-
-colors = {1: "blue", 2: "green", 3: "red", 4: "yellow", 5: "purple"}
 
 with open(sat_result, "r") as f:
     s = f.readline().strip()
