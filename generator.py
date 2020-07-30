@@ -1,29 +1,24 @@
-from sys import argv
+from argparse import ArgumentParser
 from random import randint
 from math import sqrt
 
-if len(argv) >= 2:
-    n = int(argv[1])
-else:
-    n = randint(10, 1000)
-if len(argv) >= 3:
-    p = int(argv[2])
-    assert 0 <= p <= n * (n-1) / 2
-else:
-    p = randint(0, n * sqrt(n - 1) // 2)
-if len(argv) >= 4:
-    fichier = argv[3]
-else:
-    fichier = "graphe_aleat.txt"
+parser = ArgumentParser(description="Génération d'un graphe aléatoire")
+parser.add_argument("vertices", help="number of vertices", type=int)
+parser.add_argument(
+    "file", help="where to write the graph", nargs="?", default="random.txt"
+)
+args = parser.parse_args()
 
-with open(fichier, "w") as out:
-    out.write(f"{n} {p}\n")
+edges = randint(0, args.vertices * sqrt(args.vertices - 1) // 2)
+
+with open(args.file, "w") as out:
+    out.write(f"{args.vertices} {edges}\n")
     A = set()
-    for _ in range(p):
-        i = randint(1, n)
-        j = randint(1, n)
+    for _ in range(edges):
+        i = randint(1, args.vertices)
+        j = randint(1, args.vertices)
         while i == j or (i, j) in A or (j, i) in A:
-            i = randint(1, n)
-            j = randint(1, n)
+            i = randint(1, args.vertices)
+            j = randint(1, args.vertices)
         out.write(f"{i} {j}\n")
         A.add((i, j))
